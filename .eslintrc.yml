@@ -9,6 +9,6 @@ globals:
 parserOptions:
   ecmaVersion: 2018
 rules:
-  curly: [2, multi, consistent]
+  curly: [2, multi-or-nest, consistent]
   operator-linebreak: [0, before]
   
