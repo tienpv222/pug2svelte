@@ -4,7 +4,7 @@
 
 Use svelte with pug syntax.
 
-*This is an ongoing project, covering the most basic uses. Some other pug features such as include, mixins,... may have not been fully tested*
+*This is an ongoing project, covering the most basic uses. Some other pug features such mixins,... may have not been fully tested.*
 
 ## Install
 ```
