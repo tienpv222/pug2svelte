@@ -4,7 +4,7 @@
 
 Use svelte with pug syntax.
 
-*This is an ongoing project, covering the most basic uses. Some other pug features such as include, mixins,... may have not been fully tested*
+*This is an ongoing project, covering the most basic uses. Some other pug features such mixins,... may have not been fully tested.*
 
 ## Install
 ```
@@ -116,5 +116,12 @@ p Hello {name}!
 let name = 'World'
 </script>
 ```
+
+## Pug render options
+You can also pass any [options](https://pugjs.org/api/reference.html#options) of `pug.render()`
+```javascript
+pug2svelte(content, { cache: true })
+```
+
 ## License
 [**MIT**](https://github.com/pynnl/pug2svelte/blob/master/LICENSE)

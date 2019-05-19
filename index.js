@@ -1,7 +1,4 @@
-let lex = require('pug-lexer')
-let parse = require('pug-parser')
-let { CodeGenerator } = require('pug-code-gen')
-let wrap = require('pug-runtime/wrap')
+let pug = require('pug')
 
 // Check if it's a normal tag, and then fix the svelte
 // block styled attributes if needed. Also check if there
@@ -186,13 +183,12 @@ function preprocess (str) {
 }
 
 // Render a svelte-pug template into html
-let attrs = CodeGenerator.prototype.attrs
 let _html = /^([\s\S]*?<template.*?>)([\s\S]*?)(<\/template>[\s\S]*$)/
-function render (str, { pretty, html } = {}) {
+function render (str, opts = {}) {
   let pre = ''
   let post = ''
 
-  if (html) {
+  if (opts.html) {
     let cap = str.match(_html)
     if (!cap) throw new Error(`Can't find <template lang='pug'>`)
 
@@ -201,13 +197,9 @@ function render (str, { pretty, html } = {}) {
     str = cap[2]
   }
 
-  let gen = new CodeGenerator(parse(lex(preprocess(str))), { pretty })
-  gen.attrs = function () {
-    this.terse = true
-    return attrs.call(this, ...arguments)
-  }
+  str = pug.render(preprocess(str), { ...opts, doctype: 'html' })
 
-  return pre + wrap(gen.compile())() + post
+  return pre + str + post
 }
 
 module.exports = render
