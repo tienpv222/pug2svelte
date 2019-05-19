@@ -120,7 +120,10 @@ let name = 'World'
 ## Pug render options
 You can also pass any [options](https://pugjs.org/api/reference.html#options) of `pug.render()`
 ```javascript
-pug2svelte(content, { cache: true })
+pug2svelte(content, {
+  cache: true,
+  filename: 'pug2svelte'
+  })
 ```
 
 ## License
