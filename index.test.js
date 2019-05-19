@@ -145,3 +145,21 @@ let prop = 1
     expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()
   })
 })
+
+describe('tab indent', () => {
+  test('complicated nested blocks', () => {
+    let str = `
+div1
+	{#if}
+		div2
+		{#each}
+			{#await}
+				div3
+					div4
+		div5
+	{:else}
+		div6`
+
+    dif(str, `<div1>{#if}<div2></div2>{#each}{#await}<div3><div4></div4></div3>{/await}{/each}<div5></div5>{:else}<div6></div6>{/if}</div1>`)
+  })
+})

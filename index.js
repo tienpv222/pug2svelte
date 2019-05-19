@@ -110,7 +110,7 @@ function preprocess (str) {
     // try to init tab size
     if (!tab) {
       if (indent[0] === ' ') tab = 2
-      else if (indent[0] === '/t') tab = 1
+      else if (indent[0] === '\t') tab = 1
     }
 
     // correct indent and set up
@@ -181,7 +181,7 @@ function preprocess (str) {
     // check if it's a plain text block
     _block.test(lineData) && (blockIndent = indent)
   }
-
+  console.log(rt)
   return rt
 }
 
@@ -211,3 +211,4 @@ function render (str, { pretty, html } = {}) {
 }
 
 module.exports = render
+
