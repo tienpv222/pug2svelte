@@ -1,4 +1,7 @@
 # pug2svelte
+[![Build Status](https://travis-ci.org/pynnl/pug2svelte.svg?branch=master)](https://travis-ci.org/pynnl/pug2svelte)
+[![npm version](https://badge.fury.io/js/pug2svelte.svg)](https://badge.fury.io/js/pug2svelte)
+
 Use svelte with pug syntax
 
 ## Install
@@ -11,7 +14,7 @@ let pug2svelte = require('pug2svelte')
 pug2svelte('p Hello World!')
 // <p> Hello World!</p>
 ```
-## Supported Svetle syntaxes
+## Supported Svelte syntaxes
 ```javascript
 // attribute
 a(href='page/{p}') page {p}
