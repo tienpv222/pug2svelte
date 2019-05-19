@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 let HtmlDiffer = require('html-differ').HtmlDiffer
-let { render } = require('../src')
+let { render } = require('.')
 let differ = new HtmlDiffer()
 let dif = (a, b) => expect(differ.isEqual(render(a), b)).toBeTruthy()
 
