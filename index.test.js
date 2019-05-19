@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 /* eslint-disable no-undef */
 let HtmlDiffer = require('html-differ').HtmlDiffer
 let pug2svelte = require('.')
