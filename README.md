@@ -58,7 +58,7 @@ div1
   {#if}
     div2
     {#each}
-      #{await}
+      {#await}
 
 // <div1>
 //   {#if}
