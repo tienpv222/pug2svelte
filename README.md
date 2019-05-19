@@ -2,7 +2,9 @@
 [![Build Status](https://travis-ci.org/pynnl/pug2svelte.svg?branch=master)](https://travis-ci.org/pynnl/pug2svelte)
 [![npm version](https://badge.fury.io/js/pug2svelte.svg)](https://badge.fury.io/js/pug2svelte)
 
-Use svelte with pug syntax
+Use svelte with pug syntax.
+
+*This is an ongoing project, covering the most basic uses. Some other pug features such as include, mixins,... may have not been fully tested*
 
 ## Install
 ```
