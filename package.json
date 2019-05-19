@@ -2,9 +2,10 @@
   "name": "pug2svelte",
   "version": "1.0.0",
   "description": "",
-  "main": "pug-lexer.js",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ."
   },
   "keywords": [],
   "author": "",
