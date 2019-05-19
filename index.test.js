@@ -131,7 +131,7 @@ div.
 describe('load from html template', () => {
   test('', () => {
     let str = `
-<template lang='pug'>
+<template>
 p({prop}) a paragraph
 </template>
 
@@ -139,7 +139,7 @@ p({prop}) a paragraph
 let prop = 1
 </script>`
 
-    let res = `<template lang='pug'><p {prop}> a paragraph</p></template>
+    let res = `<template><p {prop}> a paragraph</p></template>
     <script>let prop = 1</script>`
 
     expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()

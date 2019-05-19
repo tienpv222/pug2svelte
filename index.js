@@ -187,7 +187,7 @@ function preprocess (str) {
 
 // Render a svelte-pug template into html
 let attrs = CodeGenerator.prototype.attrs
-let _html = /^([\s\S]*?<template lang=(?:'pug'|"pug")>)([\s\S]*?)(<\/template>[\s\S]*$)/
+let _html = /^([\s\S]*?<template.*?>)([\s\S]*?)(<\/template>[\s\S]*$)/
 function render (str, { pretty, html } = {}) {
   let pre = ''
   let post = ''

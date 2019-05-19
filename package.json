@@ -25,5 +25,8 @@
     "html-differ": "^1.4.0",
     "jest": "^24.8.0",
     "pug": "^2.0.3"
+  },
+  "peerDependencies": {
+    "pug": "^2.0.3"
   }
 }
