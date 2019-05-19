@@ -116,5 +116,12 @@ p Hello {name}!
 let name = 'World'
 </script>
 ```
+
+## Pug render options
+You can also pass any [options](https://pugjs.org/api/reference.html#options) of `pug.render()`
+```javascript
+pug2svelte(content, { cache: true })
+```
+
 ## License
 [**MIT**](https://github.com/pynnl/pug2svelte/blob/master/LICENSE)
