@@ -68,7 +68,7 @@ function parseAttrs (str) {
 
 // Check if it's a svelte block, and
 // parse the block info
-let _sBlock = /^{([#:])(.+) ?.*/
+let _sBlock = /^{([#:])([^ }]+).*/
 
 function parseSBlock (str) {
   let cap = str.match(_sBlock)
@@ -93,10 +93,13 @@ function preprocess (str) {
   // func to close svelte blocks which are outdented
   let closeSBlocks = () => {
     for (let e of toCloseSBlocks) {
-      rt += `${e.indent}| {/${e.type}\n`
+      rt += `${e.indent}| {/${e.type}}\n`
       sBlocks.pop()
     }
   }
+
+  // make sure template ends with newline
+  str[str.length - 1] === '\n' || (str += '\n')
 
   // process line by line
   for (let line of str.match(/^.*$/gm)) {
@@ -184,25 +187,27 @@ function preprocess (str) {
 
 // Render a svelte-pug template into html
 let attrs = CodeGenerator.prototype.attrs
+let _html = /^([\s\S]*?<template lang=(?:'pug'|"pug")>)([\s\S]*?)(<\/template>[\s\S]*$)/
+function render (str, { pretty, htmlTemplate } = {}) {
+  let pre = ''
+  let post = ''
 
-function render (str, { pretty } = {}) {
+  if (htmlTemplate) {
+    let cap = str.match(_html)
+    if (!cap) throw new Error(`Can't find <template lang='pug'>`)
+
+    pre = cap[1]
+    post = cap[3]
+    str = cap[2]
+  }
+
   let gen = new CodeGenerator(parse(lex(preprocess(str))), { pretty })
   gen.attrs = function () {
     this.terse = true
     return attrs.call(this, ...arguments)
   }
-  return wrap(gen.compile())()
+
+  return pre + wrap(gen.compile())() + post
 }
 
-exports.render = render
-
-console.log(render(`
-p
-  .
-    let a = 0
-    b = 3
-
-
-let a = 0
-a + 1
-`, { pretty: false }))
+module.exports = render

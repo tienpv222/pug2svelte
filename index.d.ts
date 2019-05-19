@@ -1,8 +1,8 @@
 /**
  * Render a svelte-pug template into html
  */
-export function render(
+export default function pug2svelte (
   str: string,
   options: {
-    pretty: boolean
+    htmlTemplate: boolean
   }): string
