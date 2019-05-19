@@ -188,11 +188,11 @@ function preprocess (str) {
 // Render a svelte-pug template into html
 let attrs = CodeGenerator.prototype.attrs
 let _html = /^([\s\S]*?<template lang=(?:'pug'|"pug")>)([\s\S]*?)(<\/template>[\s\S]*$)/
-function render (str, { pretty, htmlTemplate } = {}) {
+function render (str, { pretty, html } = {}) {
   let pre = ''
   let post = ''
 
-  if (htmlTemplate) {
+  if (html) {
     let cap = str.match(_html)
     if (!cap) throw new Error(`Can't find <template lang='pug'>`)
 

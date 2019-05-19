@@ -4,5 +4,5 @@
 export default function pug2svelte (
   str: string,
   options: {
-    htmlTemplate: boolean
+    html: boolean
   }): string
