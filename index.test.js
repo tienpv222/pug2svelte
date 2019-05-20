@@ -127,6 +127,14 @@ div.
 
     dif(str, `<div>let a = 1\na = b + c</div>`)
   })
+
+  test('script', () => {
+    let str = `
+script.
+  func(function(){})`
+
+    dif(str, `<script>func(function(){})</script>`)
+  })
 })
 
 describe('load from html template', () => {

@@ -85,7 +85,7 @@ function preprocess (str) {
   let toCloseSBlocks
   let tab
   let inTag
-  let blockIndent // normal pug plain text block
+  let blockIndent = -1 // normal pug plain text block
 
   // func to close svelte blocks which are outdented
   let closeSBlocks = () => {
@@ -122,11 +122,11 @@ function preprocess (str) {
 
     // if currently inside a block:
     // just copy paste
-    if (blockIndent) {
+    if (blockIndent !== -1) {
       if (indent > blockIndent) {
         rt += line + '\n'
         continue
-      } else { blockIndent = false }
+      } else { blockIndent = -1 }
     }
 
     // if currently inside a tag:
