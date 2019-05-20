@@ -24,6 +24,7 @@ a(href='page/{p}') page {p}
 button(disable={!clickable})
 button(disable='{number === 42}')
 button({disable})
+button(on:click|once={handler})
 
 // spread attributes
 Widget({...things})
