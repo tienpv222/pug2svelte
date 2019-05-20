@@ -85,7 +85,7 @@ function preprocess (str) {
   let toCloseSBlocks
   let tab
   let inTag
-  let blockIndent // normal pug plain text block
+  let blockIndent = -1 // normal pug plain text block
 
   // func to close svelte blocks which are outdented
   let closeSBlocks = () => {
@@ -99,10 +99,18 @@ function preprocess (str) {
   str[str.length - 1] === '\n' || (str += '\n')
 
   // process line by line
-  for (let line of str.match(/^.*$/gm)) {
+  let lines = str.match(/^.*$/gm)
+  for (let i in lines) {
+    let line = lines[i]
     let cap = line.match(/^([ \t]*)(.*)$/)
     let indent = cap[1]
     let lineData = cap[2]
+
+    // blank line
+    if (/^\s*$/.test(line) && i < lines.length - 1) {
+      rt += '\n'
+      continue
+    }
 
     // try to init tab size
     if (!tab) {
@@ -122,11 +130,11 @@ function preprocess (str) {
 
     // if currently inside a block:
     // just copy paste
-    if (blockIndent) {
+    if (blockIndent !== -1) {
       if (indent > blockIndent) {
         rt += line + '\n'
         continue
-      } else { blockIndent = false }
+      } else { blockIndent = -1 }
     }
 
     // if currently inside a tag:
@@ -203,3 +211,4 @@ function render (str, opts = {}) {
 }
 
 module.exports = render
+module.exports.preprocess = preprocess

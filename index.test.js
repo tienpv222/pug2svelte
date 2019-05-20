@@ -127,6 +127,24 @@ div.
 
     dif(str, `<div>let a = 1\na = b + c</div>`)
   })
+
+  test('script', () => {
+    let str = `
+script.
+  func(function(){})`
+
+    dif(str, `<script>func(function(){})</script>`)
+  })
+
+  test('block with blank line', () => {
+    let str = `
+script.
+  func(function(){})
+
+  func(function(){})`
+
+    dif(str, `<script>func(function(){})\nfunc(function(){})</script>`)
+  })
 })
 
 describe('load from html template', () => {
