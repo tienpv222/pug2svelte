@@ -8,7 +8,7 @@ Use svelte with pug syntax.
 
 ## Install
 ```
-npm i -D pug pug2svelte
+npm i -D pug pug2svelte@latest
 ```
 ```javascript
 let pug2svelte = require('pug2svelte')
