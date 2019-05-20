@@ -44,7 +44,7 @@ function parseTagEnd (str) {
 // Wrap svelte block styled attributes with
 // quotes so pug can parse them, because the
 // normal behavious of pug is to throw errors
-let _attrs = /(?::?\w[\w-:]*|'.+?'|".+?")=(?:\w+|'.+?'|".+?"|{.*?})|'.+?'|".+?"|{.+?}|:?\w[\w-:]*/g
+let _attrs = /(?::?\w[\w-:|]*|'.+?'|".+?")=(?:\w+|'.+?'|".+?"|{.*?})|'.+?'|".+?"|{.+?}|:?\w[\w-:|]*/g
 let _attrBlock = /^{.+}$/
 let _attrValBlock = /^(.+=)({.+})$/
 

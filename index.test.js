@@ -35,6 +35,11 @@ describe('attribute', () => {
     let str = `Widget({...things})`
     dif(str, `<Widget {...things}></Widget>`)
   })
+
+  test('event with modifier', () => {
+    let str = `button(on:click|once={handler})`
+    dif(str, `<button on:click|once={handler}></button>`)
+  })
 })
 
 describe('svelte block', () => {
