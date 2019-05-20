@@ -99,10 +99,18 @@ function preprocess (str) {
   str[str.length - 1] === '\n' || (str += '\n')
 
   // process line by line
-  for (let line of str.match(/^.*$/gm)) {
+  let lines = str.match(/^.*$/gm)
+  for (let i in lines) {
+    let line = lines[i]
     let cap = line.match(/^([ \t]*)(.*)$/)
     let indent = cap[1]
     let lineData = cap[2]
+
+    // blank line
+    if (/^\s*$/.test(line) && i < lines.length - 1) {
+      rt += '\n'
+      continue
+    }
 
     // try to init tab size
     if (!tab) {
@@ -203,3 +211,4 @@ function render (str, opts = {}) {
 }
 
 module.exports = render
+module.exports.preprocess = preprocess
