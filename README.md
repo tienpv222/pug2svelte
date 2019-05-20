@@ -4,7 +4,7 @@
 
 Use svelte with pug syntax.
 
-*Eperimental*
+*Experimental*
 
 ## Install
 ```
