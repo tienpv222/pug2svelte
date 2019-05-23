@@ -168,6 +168,17 @@ let prop = 1
 
     expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()
   })
+
+  test('empty template', () => {
+    let str = `
+<script>
+let prop = 1
+</script>`
+
+    let res = `<script>let prop = 1</script>`
+
+    expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()
+  })
 })
 
 describe('tab indent', () => {
