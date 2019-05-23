@@ -191,7 +191,7 @@ function preprocess (str) {
 }
 
 // Render a svelte-pug template into html
-let _html = /^([\s\S]*?<template.*?>)([\s\S]*?)(<\/template>[\s\S]*$)/
+let _html = /^([\s\S]*?)<template.*?>([\s\S]*?)<\/template>([\s\S]*$)/
 function render (str, opts = {}) {
   let pre = ''
   let post = ''

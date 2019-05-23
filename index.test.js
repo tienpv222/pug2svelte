@@ -163,7 +163,7 @@ p({prop}) a paragraph
 let prop = 1
 </script>`
 
-    let res = `<template><p {prop}> a paragraph</p></template>
+    let res = `<p {prop}> a paragraph</p>
     <script>let prop = 1</script>`
 
     expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()
