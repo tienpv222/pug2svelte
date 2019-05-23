@@ -3,7 +3,7 @@
 let HtmlDiffer = require('html-differ').HtmlDiffer
 let pug2svelte = require('.')
 let differ = new HtmlDiffer()
-let dif = (a, b) => expect(differ.isEqual(pug2svelte(a), b)).toBeTruthy()
+let dif = (a, b) => expect(differ.isEqual(pug2svelte(a, { pug: true }), b)).toBeTruthy()
 
 describe('tag', () => {
   test('', () => {
@@ -153,7 +153,7 @@ script.
 })
 
 describe('load from html template', () => {
-  test('', () => {
+  test('with deprecated html flag', () => {
     let str = `
 <template>
 p({prop}) a paragraph
@@ -169,6 +169,22 @@ let prop = 1
     expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()
   })
 
+  test('without deprecated html flag', () => {
+    let str = `
+<template>
+p({prop}) a paragraph
+</template>
+
+<script>
+let prop = 1
+</script>`
+
+    let res = `<p {prop}> a paragraph</p>
+    <script>let prop = 1</script>`
+
+    expect(differ.isEqual(pug2svelte(str), res)).toBeTruthy()
+  })
+
   test('empty template', () => {
     let str = `
 <script>
@@ -177,7 +193,7 @@ let prop = 1
 
     let res = `<script>let prop = 1</script>`
 
-    expect(differ.isEqual(pug2svelte(str, { html: true }), res)).toBeTruthy()
+    expect(differ.isEqual(pug2svelte(str), res)).toBeTruthy()
   })
 })
 

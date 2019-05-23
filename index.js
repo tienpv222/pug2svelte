@@ -196,7 +196,7 @@ function render (str, opts = {}) {
   let pre = ''
   let post = ''
 
-  if (opts.html) {
+  if (opts.html || !opts.pug) {
     let cap = str.match(_html)
     if (cap) {
       pre = cap[1]
