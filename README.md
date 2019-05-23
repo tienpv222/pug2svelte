@@ -6,6 +6,7 @@ Use svelte with pug syntax.
 
 *Experimental*
 
+*Note: from v0.0.2-alpha.8, default behaviour is to parse from template tag*
 ## Install
 ```
 npm i -D pug pug2svelte@latest
@@ -13,7 +14,7 @@ npm i -D pug pug2svelte@latest
 ```javascript
 let pug2svelte = require('pug2svelte')
 
-pug2svelte('p Hello World!')
+pug2svelte('<template>p Hello World!</template>')
 // <p> Hello World!</p>
 ```
 ## Supported Svelte syntaxes
@@ -81,7 +82,7 @@ import pug2svelte from 'pug2svelte'
 export default {
   plugins: [
     svelte({
-      extensions: ['.svelte', '.pug'],
+      extensions: ['.svelte'],
       preprocess: {
         markup: ({ content }) => ({ code: pug2svelte(content) })
       },
@@ -90,32 +91,32 @@ export default {
   ]
 }
 ```
+```html
+// app.svelte
+<template>p Hello {name}!</template>
+
+<script>
+  let name = 'World'
+</script>
+<!-- Hello World! -->
+```
+
+## Parse from pug file
 ```javascript
-// app.pug | app.svelte
+// rollup.config.js
+...
+extensions: ['.pug'],
+preprocess: {
+  markup: ({ content }) => ({ code: pug2svelte(content, { pug: true }) })
+}
+...
+```
+```javascript
+// app.pug
 p Hello {name}!
 
 script.
   let name = 'World'
-
-// Hello World!
-```
-
-## Parse from Html template
-```javascript
-// rollup.config.js
-...
-markup: ({ content }) => ({ code: pug2svelte(content, { html: true }) }),
-...
-```
-```vue
-<!-- app.svelte -->
-<template>
-p Hello {name}!
-</template>
-
-<script>
-let name = 'World'
-</script>
 ```
 
 ## Pug render options

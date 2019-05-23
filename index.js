@@ -196,13 +196,16 @@ function render (str, opts = {}) {
   let pre = ''
   let post = ''
 
-  if (opts.html) {
+  if (opts.html || !opts.pug) {
     let cap = str.match(_html)
-    if (!cap) throw new Error(`Can't find <template lang='pug'>`)
-
-    pre = cap[1]
-    post = cap[3]
-    str = cap[2]
+    if (cap) {
+      pre = cap[1]
+      post = cap[3]
+      str = cap[2]
+    } else {
+      post = str
+      str = ''
+    }
   }
 
   str = pug.render(preprocess(str), { ...opts, doctype: 'html' })
