@@ -1,12 +1,10 @@
 # pug2svelte
 [![Build Status](https://travis-ci.org/pynnl/pug2svelte.svg?branch=master)](https://travis-ci.org/pynnl/pug2svelte)
 [![npm version](https://badge.fury.io/js/pug2svelte.svg)](https://badge.fury.io/js/pug2svelte)
+[![Dependencies Status](https://david-dm.org/pynnl/pug2svelte.svg)](https://github.com/pynnl/pug2svelte)
 
 Use svelte with pug syntax.
 
-*Experimental*
-
-*Note: from v0.0.2-alpha.8, default behaviour is to parse from template tag*
 ## Install
 ```
 npm i -D pug pug2svelte@latest
