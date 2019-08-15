@@ -1,3 +1,5 @@
+Archived. Check out [svelte-preprocess](https://github.com/kaisermann/svelte-preprocess) for more advanced uses.
+
 # pug2svelte
 [![Build Status](https://travis-ci.org/pynnl/pug2svelte.svg?branch=master)](https://travis-ci.org/pynnl/pug2svelte)
 [![npm version](https://badge.fury.io/js/pug2svelte.svg)](https://badge.fury.io/js/pug2svelte)
